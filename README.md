@@ -7,4 +7,4 @@ Set the maxWidth, gutter size, and the maximum number of columns you will be nee
 
 Then just include 'lunch-mixin(number)' for each breakpoint your design requires.
 
-parp.
+parp...
