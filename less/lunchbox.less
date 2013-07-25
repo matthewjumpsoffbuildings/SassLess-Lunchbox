@@ -1,0 +1,110 @@
+/* ------------------------------------------------------------------------------
+- LUNCHBOX.CSS
+- Author: Sam Featherstone
+- Lessified: Matthew Prasinov
+ 
+- Modify the variables then add breakpoints where you need them
+------------------------------------------------------------------------------ */
+
+
+/* ---------------------------------------- */
+/* --            VARIABLES               -- */
+/* ---------------------------------------- */
+@maxWidth: 960px;
+@gutters: 25px;
+@columns: 8;
+
+/* ---------------------------------------- */
+/* --            BREAKPOINTS             -- */
+/* ---------------------------------------- */
+
+/* default */
+
+.lunch-mixin();
+
+/* custom */
+
+@media only screen and (max-width:850px) { .lunch-mixin(850); }
+@media only screen and (max-width:700px) { .lunch-mixin(700); }
+@media only screen and (max-width:500px) { .lunch-mixin(500); }
+
+
+
+
+/* ---------------------------------------- */
+/* --              BASE                  -- */
+/* ---------------------------------------- */
+
+body,html {
+	overflow-x: hidden
+}
+
+/* ---------------------------------------- */
+/* --              BACKPACK              -- */
+/* ---------------------------------------- */
+
+.backpack {
+	max-width:@maxWidth;
+	margin:0 auto;
+	padding-left:@gutters;
+	padding-right:@gutters;
+	.box-sizing(border-box);
+}
+
+/* ---------------------------------------- */
+/* --              LUNCHBOX              -- */
+/* ---------------------------------------- */
+
+/* ----- defaults ----- */
+
+.lunchbox {display:block;margin-right:-@gutters}
+.lunchbox.bottom > .lunch {margin-bottom:@gutters}
+.lunch {border-right:@gutters solid transparent}
+
+
+.lunchbox:before,.lunchbox:after{content:"";display:table;}
+.lunchbox:after{clear:both;}
+img.max{width:auto;max-width:100%;height:auto;display:block}
+
+/* ---------------------------------------- */
+/* --               LUNCH                -- */
+/* ---------------------------------------- */
+
+.lunch {
+	float:left;
+	width:100%;
+	.box-sizing(border-box);
+	-moz-background-clip:padding-box!important;
+	-webkit-background-clip:padding-box!important;
+	background-clip:padding-box!important;
+}
+
+/* ----- defaults ----- */
+.lunch-x (@size, @at, @column) when (@column =< @columns) {
+	.lunch-x(@size, @at, @column, 1);
+	.lunch-x(@size, @at, @column + 1, );
+}
+
+.lunch-x (@size, @at, @column, @index) when (@index < @column), (@index = 1) {
+	.lunch.@{at}@{size}c@{index}of@{column}{width:(@index/@column)*100%}
+	.lunch-x(@size, @at, @column, @index + 1);
+}
+
+.lunch-mixin() { .lunch-mixin(~"", ~""); }
+
+.lunch-mixin(@size) { .lunch-mixin(@size, at); }
+
+.lunch-mixin(@size, @at)
+{
+	.lunch.@{at}@{size}left{float:left}
+	.lunch.@{at}@{size}right{float:right}
+	.lunch.@{at}@{size}hidden{display: none;}
+	.lunch.@{at}@{size}visible{display: block;}
+	.lunch-x(@size, @at, 1);
+}
+
+.box-sizing(@string) {
+	-moz-box-sizing:@string;
+	-webkit-box-sizing:@string;
+	box-sizing:@string;
+}

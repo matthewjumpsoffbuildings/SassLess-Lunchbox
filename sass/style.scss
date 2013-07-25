@@ -1,0 +1,103 @@
+/* ------------------------------------------------------------------------------
+- LUNCHBOX.CSS
+- Author: Sam Featherstone
+- Sassified: Matthew Prasinov
+ 
+- Modify the variables then add custom breakpoints where you need them
+------------------------------------------------------------------------------ */
+
+/* ---------------------------------------- */
+/* --            VARIABLES               -- */
+/* ---------------------------------------- */
+$maxWidth: 960px;
+$gutters: 25px;
+$columns: 8;
+
+/* ---------------------------------------- */
+/* --            BREAKPOINTS             -- */
+/* ---------------------------------------- */
+/* --             defaults               -- */
+/* ---------------------------------------- */
+
+@mixin lunch($size:'', $at:'') {
+	@if($size != '') { $at:at};
+	.lunch.#{$at}#{$size}left{float:left}
+	.lunch.#{$at}#{$size}right{float:right}
+	.lunch.#{$at}#{$size}hidden{display: none;}
+	.lunch.#{$at}#{$size}visible{display: block;}
+	@for $column from 1 through $columns {
+		@for $index from 1 to $column {
+			.lunch.#{$at}#{$size}c#{$index}of#{$column}{width:($index/$column)*100%}
+		}
+	}
+}
+@include lunch();
+
+/* ---------------------------------------- */
+/* --            BREAKPOINTS             -- */
+/* ---------------------------------------- */
+/* --              custom                -- */
+/* ---------------------------------------- */
+
+@media only screen and (max-width:850px) { @include lunch(850); }
+
+
+
+
+
+
+/* ---------------------------------------- */
+/* --              BASE                  -- */
+/* ---------------------------------------- */
+
+body,html {
+	overflow-x: hidden
+}
+
+@mixin box-sizing($string) {
+	-moz-box-sizing:$string;
+	-webkit-box-sizing:$string;
+	box-sizing:$string;
+}
+
+/* ---------------------------------------- */
+/* --              BACKPACK              -- */
+/* ---------------------------------------- */
+
+.backpack {
+	max-width:$maxWidth;
+	margin:0 auto;
+	padding-left:$gutters;
+	padding-right:$gutters;
+	@include box-sizing(border-box);
+}
+
+/* ---------------------------------------- */
+/* --              LUNCHBOX              -- */
+/* ---------------------------------------- */
+
+/* ----- defaults ----- */
+
+.lunchbox {display:block;margin-right:-$gutters}
+.lunchbox.bottom > .lunch {margin-bottom:$gutters}
+.lunch {border-right:$gutters solid transparent}
+
+
+.lunchbox:before,.lunchbox:after{content:"";display:table;}
+.lunchbox:after{clear:both;}
+img.max{width:auto;max-width:100%;height:auto;display:block}
+
+/* ---------------------------------------- */
+/* --               LUNCH                -- */
+/* ---------------------------------------- */
+
+.lunch {
+	float:left;
+	width:100%;
+	@include box-sizing(border-box);
+	-moz-background-clip:padding-box!important;
+	-webkit-background-clip:padding-box!important;
+	background-clip:padding-box!important;
+}
+
+
