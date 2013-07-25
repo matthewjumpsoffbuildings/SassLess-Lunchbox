@@ -1,8 +1,8 @@
 SassLess-Lunchbox
 =================
 
-Lunchbox Responsive CSS converted to SASS and LESS
+[Lunchbox Responsive CSS](https://github.com/samburgers/Lunchbox-CSS) converted to SASS and LESS
 
 Set the maxWidth, gutter size, and the maximum number of columns you will be needing.
 
-Then just include the mixin for each breakpoint your design requires.
+Then just include 'lunch-mixin(number)' for each breakpoint your design requires.

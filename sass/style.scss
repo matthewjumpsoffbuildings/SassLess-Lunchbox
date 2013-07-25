@@ -19,7 +19,7 @@ $columns: 8;
 /* --             defaults               -- */
 /* ---------------------------------------- */
 
-@mixin lunch($size:'', $at:'') {
+@mixin lunch-mixin($size:'', $at:'') {
 	@if($size != '') { $at:at};
 	.lunch.#{$at}#{$size}left{float:left}
 	.lunch.#{$at}#{$size}right{float:right}
@@ -31,7 +31,7 @@ $columns: 8;
 		}
 	}
 }
-@include lunch();
+@include lunch-mixin();
 
 /* ---------------------------------------- */
 /* --            BREAKPOINTS             -- */
@@ -39,7 +39,7 @@ $columns: 8;
 /* --              custom                -- */
 /* ---------------------------------------- */
 
-@media only screen and (max-width:850px) { @include lunch(850); }
+@media only screen and (max-width:850px) { @include lunch-mixin(850); }
 
 
 
