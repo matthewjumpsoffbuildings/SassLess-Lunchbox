@@ -7,7 +7,7 @@ Set the maxWidth, gutter size, and the maximum number of columns you will be nee
 
 Then just include:
 
-    @media query(number) { lunch-mixin(number) } 
+    @media query(number) { lunch-mixin(number) } //psuedocode
     
 for each breakpoint your design requires.
 
