@@ -1,4 +1,4 @@
-SassLess-Lunchbox
+SassLess Lunchbox
 =================
 
 [Lunchbox Responsive CSS](https://github.com/samburgers/Lunchbox-CSS) converted to SASS and LESS
