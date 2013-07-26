@@ -5,9 +5,9 @@ SassLess-Lunchbox
 
 Set the maxWidth, gutter size, and the maximum number of columns you will be needing.
 
-Then just include:
+Then just include the following (psuedocode):
 
-    @media query(number) { lunch-mixin(number) } //psuedocode
+    @media query(number) { lunch-mixin(number) }
     
 for each breakpoint your design requires.
 
